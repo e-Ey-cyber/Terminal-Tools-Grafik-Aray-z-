@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: Pardus-Software
+Version: 0.1.0
+Summary: Pardus Software Center
+Home-page: https://www.pardus.org.tr
+Author: Fatih Altun
+Author-email: fatih.altun@pardus.org.tr
+License: GPLv3
+Keywords: software center
+Requires-Dist: PyGObject
