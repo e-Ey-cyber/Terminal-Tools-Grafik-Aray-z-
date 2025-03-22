@@ -1,0 +1,11 @@
+#!/bin/bash
+
+MAIN_SCRIPT="$(dirname "$0")/main.py"
+
+# Ana program dosyasını kontrol et
+if [ -f "$MAIN_SCRIPT" ]; then
+    python3 "$MAIN_SCRIPT"
+else
+    echo "Ana program dosyası bulunamadı!"
+    exit 1
+fi
