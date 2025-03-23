@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=ToolsGet
+Name[tr]=ToolsGet
+Comment=Terminal Araçları Yönetici
+Comment[tr]=Terminal Araçları Yönetici
+Exec=/usr/local/bin/toolsget-starter
+Icon=/usr/share/pardus/toolsget/icons/toolsget.png
+Terminal=false
+Type=Application
+Categories=System;Settings;
+StartupNotify=true
