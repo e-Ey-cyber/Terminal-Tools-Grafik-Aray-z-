@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Sabit değişkenler
+VERSION="1.0.0"
+APP_NAME="ToolsGet"
+APP_DIR="/usr/share/pardus/toolsget"
+MAIN_SCRIPT="$APP_DIR/main.py"
+
+# Renk kodları
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+# Hata mesajı fonksiyonu
+error() {
+    echo -e "${RED}Hata: $1${NC}"
+    exit 1
+}
+
+# Başarı mesajı fonksiyonu
+success() {
+    echo -e "${GREEN}$1${NC}"
+}
+
+# Root kontrolü
+check_root() {
+    if [[ $EUID -eq 0 ]]; then
+        error "Bu program root olarak çalıştırılamaz!"
+    fi
+}
+
+# Program kurulu mu kontrolü
+check_installation() {
+    if [ ! -f "$MAIN_SCRIPT" ]; then
+        error "Program dosyaları bulunamadı!\nLütfen yeniden kurulum yapın: sudo python3 setup.py install"
+    fi
+}
+
+# Ana fonksiyon
+main() {
+    case "$1" in
+        --help|-h)
+            echo "$APP_NAME - Pardus Araç Yöneticisi v$VERSION"
+            echo "Kullanım: toolsget [SEÇENEKLER]"
+            echo ""
+            echo "Seçenekler:"
+            echo "  --help, -h     Bu yardım mesajını göster"
+            echo "  --version, -v  Sürüm bilgisini göster"
+            echo "  --update       Programı güncelle"
+            echo "  --search       Paket ara (örn: toolsget --search firefox)"
+            ;;
+        --version|-v)
+            echo "$APP_NAME v$VERSION"
+            ;;
+        --update)
+            echo "Güncelleme kontrol ediliyor..."
+            # Güncelleme kodu buraya eklenecek
+            ;;
+        --search)
+            if [ -z "$2" ]; then
+                error "Arama terimi belirtilmedi!\nKullanım: toolsget --search <paket_adı>"
+            fi
+            python3 "$MAIN_SCRIPT" --search "$2"
+            ;;
+        "")
+            check_root
+            check_installation
+            python3 "$MAIN_SCRIPT"
+            ;;
+        *)
+            error "Geçersiz parametre: $1\nYardım için: toolsget --help"
+            ;;
+    esac
+}
+
+# Programı çalıştır
+main "$@"

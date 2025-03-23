@@ -1,0 +1,18 @@
+Metadata-Version: 2.2
+Name: Tools-Get
+Version: 0.1.0
+Summary: Terminal araçları yükleme arayüzü
+Home-page: https://www.pardus.org.tr
+Author: Pardus
+Author-email: info@pardus.org.tr
+License: GPLv3
+Keywords: package manager
+Requires-Dist: Pillow>=9.0.0
+Requires-Dist: requests>=2.25.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: summary
