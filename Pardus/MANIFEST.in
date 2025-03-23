@@ -1,5 +1,0 @@
-include LICENSE
-include README.md
-recursive-include src/icons *
-recursive-include src/data *
-recursive-include src/themes *
